@@ -1,5 +1,7 @@
 class User < ApplicationRecord
   attr_accessor :password
+  has_many :questions
+  has_many :answers
   validates_confirmation_of :password
   validates :email, :presence => true, :uniqueness => true
   before_save :encrypt_password

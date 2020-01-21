@@ -1,0 +1,16 @@
+<h2><%= @question.question_content %></h2>
+
+
+<p><%= link_to "Edit Question", edit_question_path(@question)%></p>
+<p><%= link_to "Add Answer", new_question_answer_path(@question)%></p>
+
+
+<% if @question.answers.any? %>
+<h4>Answers: </h4>
+<% @question.answers.each do |answer| %>
+<p><%= answer.user.email%> says:</p>
+<p><%= answer.answer %></p>
+<p><%= link_to "Edit Answer", edit_question_answer_path(@question, answer)%></p>
+<%end%>
+<%end%>
+<p><%= link_to "All Questions", root_path%></p>

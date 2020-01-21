@@ -1,0 +1,14 @@
+<h2>Edit Answer</h2>
+
+<%= form_for [@question, @answer] do |f| %>
+  <%= f.label :answer %>
+  <%= f.text_field :answer %>
+  <%= f.hidden_field :rating, :value => 0%>
+  <%= f.hidden_field :user_id, :value => session[:user_id]%>
+  <%= f.submit "Submit Answer"%>
+<% end %>
+
+
+<p><%= link_to "Delete", question_answer_path(@question, @answer),
+  :data => {:confirm => "You sure?",
+  :method => "delete"} %></p>

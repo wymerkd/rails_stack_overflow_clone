@@ -1,0 +1,13 @@
+<% if session[:user_id] == nil %>
+<p>Please sign in to view this page</p>
+<% else %>
+
+<% if @questions.any? %>
+<% @questions.each do |question| %>
+<p><%= link_to question.question_content, question_path(question)%></p>
+<% end %>
+<% else %>
+<p>There are no questions to display</p>
+<% end %>
+<p><%= link_to "Add a question", new_question_path%></p>
+<%end%>
