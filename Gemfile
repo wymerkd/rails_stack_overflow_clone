@@ -19,7 +19,6 @@ gem 'jbuilder', '~> 2.7'
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
 gem 'bcrypt', '~> 3.1.7'
-
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
@@ -30,10 +29,15 @@ gem 'jquery-rails'
 gem 'bootstrap-sass', '~> 3.4.1'
 gem 'sassc-rails', '>= 2.1.0'
 gem 'faker'
+gem 'httparty'
 
 
 group :test do
+  gem 'factory_bot_rails'
   gem 'shoulda-matchers'
+  gem 'simplecov', require: false
+  gem 'vcr'
+  gem 'webmock'
 end
 
 group :development, :test do
@@ -42,6 +46,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'launchy'
   gem 'pry'
+  gem 'dotenv-rails'
 end
 
 group :development do

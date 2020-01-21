@@ -24,12 +24,16 @@ class QuestionsController < ApplicationController
   end
 
   def edit
+    @user = User.find(session[:user_id])
     @question = Question.find(params[:id])
+
     render :edit
   end
 
   def show
+    @user = User.find(session[:user_id])
   @question = Question.find(params[:id])
+   @highest_rated = Answer.three_highest_rated
   render :show
   end
 

@@ -1,7 +1,8 @@
 <h2><%= @question.question_content %></h2>
 
-
+<% if @user.id == @question.user_id || @user.admin == true %>
 <p><%= link_to "Edit Question", edit_question_path(@question)%></p>
+<% end %>
 <p><%= link_to "Add Answer", new_question_answer_path(@question)%></p>
 
 
@@ -18,8 +19,18 @@
   <%= f.hidden_field :rating, :value => (answer.rating - 1)%>
   <%= f.submit "Downvote"%>
 <% end %>
-
+<% if @user.id == @question.user_id || @user.admin == true %>
 <p><%= link_to "Edit Answer", edit_question_answer_path(@question, answer)%></p>
 <%end%>
 <%end%>
+<%end%>
 <p><%= link_to "All Questions", root_path%></p>
+
+
+<% if @highest_rated.any? %>
+<% @highest_rated.each do |rating| %>
+<p><%= link_to rating.answer, question_path(rating.question_id)%></p>
+<% end %>
+<% else %>
+<p>There are no questions to display</p>
+<% end %>

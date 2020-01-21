@@ -2,6 +2,8 @@
 <p>Please sign in to view this page</p>
 <% else %>
 
+<h2><%= @joke %></h2>
+
 <% if @questions.any? %>
 <h4>All Questions</h4>
 <% @questions.each do |question| %>

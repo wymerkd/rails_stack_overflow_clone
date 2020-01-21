@@ -2,6 +2,7 @@ class AnswersController < ApplicationController
 
   def index
     @answers = Answer.all
+    @highest_rated = Answer.three_highest_rated
     :index
   end
 
