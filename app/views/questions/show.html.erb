@@ -9,7 +9,16 @@
 <h4>Answers: </h4>
 <% @question.answers.each do |answer| %>
 <p><%= answer.user.email%> says:</p>
-<p><%= answer.answer %></p>
+<p><%= answer.answer %></p> <p><%= answer.rating %></p>
+<%= form_for [@question, answer] do |f| %>
+  <%= f.hidden_field :rating, :value => (answer.rating + 1)%>
+  <%= f.submit "Upvote"%>
+<% end %>
+<%= form_for [@question, answer] do |f| %>
+  <%= f.hidden_field :rating, :value => (answer.rating - 1)%>
+  <%= f.submit "Downvote"%>
+<% end %>
+
 <p><%= link_to "Edit Answer", edit_question_answer_path(@question, answer)%></p>
 <%end%>
 <%end%>

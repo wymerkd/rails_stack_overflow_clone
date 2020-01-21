@@ -36,6 +36,7 @@ class AnswersController < ApplicationController
     @answer= Answer.find(params[:id])
       if @answer.update(answer_params)
         flash[:notice] = "Answer successfully updated"
+        # binding.pry
         redirect_to question_path(params[:question_id])
       else
         flash[:alert] = "Answer unable to be updated"
@@ -53,6 +54,6 @@ end
 
 private
 def answer_params
-  params.require(:answer).permit(:answer, :user_id)
+  params.require(:answer).permit(:answer, :user_id, :rating)
 end
 end
